@@ -968,7 +968,7 @@ pop3[geo==<span class="st">&quot;north.brabant&quot;</span>,.(<span class="dt">p
 ## 7: north.brabant      vvd 0.208</code></pre>
 <div id="trim-weights" class="section level3">
 <h3>Trim weights</h3>
-<p>Let’s observe the range of the weights first. As above, we need to look through <code>str(vaa2.p)</code> to see where it is located. We can get the lowest and highest value of a vector by using the function range().</p>
+<p>Let’s observe the range of the weights first. As above, we need to look through <code>str(vaa2.p)</code> to see where it is located. We can get the lowest and highest value of a vector by using the function <code>range()</code>.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">range</span>(<span class="kw">attr</span>(vaa2.p$postStrata[[<span class="dv">1</span>]][<span class="dv">2</span>][[<span class="dv">1</span>]], <span class="st">&quot;weights&quot;</span>)) <span class="co"># here the location of the weights is slightly more complicated than above but it follows the same logic.</span></code></pre>
 <pre><code>## [1]  0.02228658 66.02198517</code></pre>
 <p>So apparently, some observations have weights over 66. This is <a href="https://www.r-bloggers.com/survey-computing-your-own-post-stratification-weights-in-r/">not recommended</a>. Weights can be trimmmed with the <code>trimWeights()</code> function:</p>
@@ -982,9 +982,9 @@ pop3[geo==<span class="st">&quot;north.brabant&quot;</span>,.(<span class="dt">p
 <div id="attach-weights-to-data-export" class="section level3">
 <h3>Attach weights to data &amp; export</h3>
 <p>We can append the weights to the data sets we used, or just to the unique token variable so that we can merge externally with the larger data set.</p>
-<pre class="sourceCode r"><code class="sourceCode r">weights &lt;-<span class="st"> </span><span class="kw">data.table</span>(vaa2$token,<span class="kw">weights</span>(vaa2.tr))
+<pre class="sourceCode r"><code class="sourceCode r">weights &lt;-<span class="st"> </span><span class="kw">data.table</span>(<span class="dt">token=</span>vaa2$token,<span class="dt">weight=</span><span class="kw">weights</span>(vaa2.tr))
 weights</code></pre>
-<pre><code>##                                      V1        V2
+<pre><code>##                                   token    weight
 ##     1: zvXSpJ0N6RuUmsZ0LUSij71lTQitXUKf 0.6595857
 ##     2: fcSelLUt4i4guhe6s4b4yAvgMTaPFw25 0.6595857
 ##     3: Bp90FXYmquJJwbx2Ls9Qm3lyfxhk2dFh 0.6595857
