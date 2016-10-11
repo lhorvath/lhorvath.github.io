@@ -982,20 +982,20 @@ pop3[geo==<span class="st">&quot;north.brabant&quot;</span>,.(<span class="dt">p
 <div id="attach-weights-to-data-export" class="section level3">
 <h3>Attach weights to data &amp; export</h3>
 <p>We can append the weights to the data sets we used, or just to the unique token variable so that we can merge externally with the larger data set.</p>
-<pre class="sourceCode r"><code class="sourceCode r">weights &lt;-<span class="st"> </span><span class="kw">as.data.table</span>(<span class="kw">cbind</span>(vaa2$token,<span class="kw">weights</span>(vaa2.tr)))
+<pre class="sourceCode r"><code class="sourceCode r">weights &lt;-<span class="st"> </span><span class="kw">data.table</span>(vaa2$token,<span class="kw">weights</span>(vaa2.tr))
 weights</code></pre>
-<pre><code>##            V1        V2
-##     1: 261626 0.6595857
-##     2:  86624 0.6595857
-##     3:  56142 0.6595857
-##     4: 139795 0.6595857
-##     5: 110045 3.0000000
-##    ---                 
-## 53408:  73947 0.8130441
-## 53409: 261285 0.8130441
-## 53410: 236744 0.8130441
-## 53411: 238914 0.8130441
-## 53412:  37354 0.8130441</code></pre>
+<pre><code>##                                      V1        V2
+##     1: zvXSpJ0N6RuUmsZ0LUSij71lTQitXUKf 0.6595857
+##     2: fcSelLUt4i4guhe6s4b4yAvgMTaPFw25 0.6595857
+##     3: Bp90FXYmquJJwbx2Ls9Qm3lyfxhk2dFh 0.6595857
+##     4: LLc0qekiD3ni8dKTfvBfV54TimXmvbuE 0.6595857
+##     5: i0sRgB7EGRs6v42ue69XhgDzrPdzVjYD 3.0000000
+##    ---                                           
+## 53408: Ds5uK3zY74NiePtvXsXSHJoH2Ile0ONr 0.8130441
+## 53409: ZUp31G7BJktnOgn2kZlyT0YLlGWp0whc 0.8130441
+## 53410: wxRAZpHib2KuGohPzJtaT3679guOxEMQ 0.8130441
+## 53411: xAWEQgj0Jxy7bJkbbxnszLXeBNrOlA7r 0.8130441
+## 53412: 8vfZ73elwQxPiTcKitIv6EEPb3Ix85ID 0.8130441</code></pre>
 <p>Exporting to the working directory by:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">write.csv</span>(weights,<span class="dt">file=</span><span class="st">&quot;weights.csv&quot;</span>)</code></pre>
 </div>
